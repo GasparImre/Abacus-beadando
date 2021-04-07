@@ -24,7 +24,7 @@ class  CreateDataTable extends Migration
             $table->integer('ladder_7');
             $table->integer('ladder_8');
             $table->timestamps();
-            $table->string('username',100);
+            $table->string('username',100)->default('Abacus user');
         });
     }
 
