@@ -6,7 +6,36 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <title>Beugró Abacus</title>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="{{asset('js/mozgat.js')}}"></script>
+        <script>$(document).ready(function (){
+
+                $('.rounded-pill').on('click', function(){
+
+                    if($(this).hasClass('float-left'))
+                    {
+
+                        $(this).addClass('float-left').removeClass('float-right')
+                    }
+                    else{
+
+                        $(this).addClass('float-right').removeClass('float-left')
+                    }
+                    const parentspan = $(this).parent('span');
+
+                    var x=0;
+                    parentspan.children().each(function ()
+                    {
+                        if($(this).hasClass('float-left'))
+                        {
+                            x++;
+
+                        }
+                    })
+
+                    $('input[name="'+parentspan.attr('id')+'"]').val(x);
+                    $('.'+parentspan.attr('id')+'_numb').html(x);
+                });
+
+            }) </script>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -204,33 +233,4 @@
 
     </body>
 </html>
-<script>$(document).ready(function (){
 
-        $('.rounded-pill').on('click', function(){
-
-            if($(this).hasClass('float-left'))
-            {
-
-                $(this).addClass('float-left').removeClass('float-right')
-            }
-            else{
-
-                $(this).addClass('float-right').removeClass('float-left')
-            }
-           const parentspan = $(this).parent('span');
-
-            var x=0;
-            parentspan.children().each(function ()
-            {
-                if($(this).hasClass('float-left'))
-                {
-                    x++;
-
-                }
-            })
-
-            $('input[name="'+parentspan.attr('id')+'"]').val(x);
-            $('.'+parentspan.attr('id')+'_numb').html(x);
-        });
-
-    }) </script>
